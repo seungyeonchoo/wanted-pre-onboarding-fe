@@ -1,7 +1,7 @@
-# 원티드 프리온보딩 사전과제
+# 원티드 프리온보딩 - 프론트엔드 - 사전과제
 
 
-## Available Scripts
+## Description
 
 In the project directory, you can run:
 
