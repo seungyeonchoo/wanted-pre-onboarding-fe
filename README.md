@@ -1,8 +1,7 @@
-# Getting Started with Create React App
+# 원티드 프리온보딩 - 프론트엔드 - 사전과제
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Description
 
 In the project directory, you can run:
 
