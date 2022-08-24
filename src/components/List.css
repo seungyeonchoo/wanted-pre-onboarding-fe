@@ -1,0 +1,116 @@
+
+.todolist {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+    width: 600px;
+    height: 600px;
+    background-color: #ffebee;
+}
+
+.todo-box {
+    width: 90%;
+    height: 75%;
+    background-color: #ffffff;
+}
+
+.todo-title {
+    position: absolute;
+    top: 15px;
+    font-size: 1.2em;
+    color: #bf360c;
+    width: 90%;
+    text-align: center;
+}
+
+.todo-input {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    padding: 10px;
+    background-color: #ffffff;  
+}
+
+.todo-input input {
+    text-align: center;
+    width: 95%;
+    height: 30px;
+    font-size: 1em;
+    border: none;
+    border-bottom: 1.5px solid #929292;
+
+}   
+
+.edit-input {
+    text-align: center;
+    width: 70%;
+    height: 30px;
+    font-size: 1em;
+    border: none;
+}
+
+.todo-input input:focus {
+    outline: none; 
+}
+
+.todo-item-addbtn {
+    width: 30px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 50%;
+    border: none;
+    background-color: #babdbe;
+    color: #ffffff;
+    margin: 0 10px;
+}
+
+.todo-item-addbtn:hover {
+    background-color: #396EE2;
+}
+
+.todo-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.todo-item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    padding: 10px 40px;
+    border-top: 1px solid #cfcfcf;
+    border-bottom: 1px solid #cfcfcf;
+}
+
+.todo-item:hover {
+    background-color: #efefef;
+}
+
+.item {
+    width: 80%;
+}
+
+.item-btn {
+    width: 12%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.del-btn, .edit-btn {
+    cursor: pointer;
+    font-size: 0.8em;   
+}
+
+.del-btn:hover, .edit-btn:hover {
+    font-weight: bolder;
+}
