@@ -30,6 +30,7 @@
     height: 45px;
     background-color: #ffffff;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .login-btn:hover {
@@ -52,6 +53,7 @@
 
 .login-box span {
     color: black;
+    cursor: pointer;
 }
 
 .login-box span:hover {
