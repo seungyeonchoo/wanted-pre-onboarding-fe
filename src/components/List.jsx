@@ -2,22 +2,19 @@ import './List.css';
 import Item from './Item'
 import Input from './Input';
 import { useEffect, useRef, useState } from 'react';
-import { text } from '@fortawesome/fontawesome-svg-core';
 import axios from 'axios';
-import { logDOM } from '@testing-library/react';
 import { useNavigate } from 'react-router-dom';
 
 function List() {
 
     const navigate = useNavigate();
-
+    const [todoItems, setTodoItems] = useState([]);
+    
     useEffect(() => {
         if(!localStorage.getItem('access')) {
             navigate('/', {replace:false})
-        } 
+        }
     },[])
-
-    const [todoItems, setTodoItems] = useState([]);
 
     useEffect(() => { getList() }, []
     )
@@ -29,13 +26,6 @@ function List() {
         .then((response) => {
             setTodoItems(response.data)
         })
-    }
-
-    function addItem(inputValue){
-        setTodoItems(prevList => {
-            return [...prevList, inputValue];
-        });
-        console.log(todoItems);
     }
 
     function delItem(itemId){
@@ -69,7 +59,13 @@ function List() {
                 ));
         })
     };
-
+    
+    function addItem(inputValue){
+        setTodoItems(prevList => {
+            return [...prevList, inputValue];
+        });
+        console.log(todoItems);
+    }
     function handleLogOut() {
         localStorage.removeItem('access');
         navigate('/', {replace:false});

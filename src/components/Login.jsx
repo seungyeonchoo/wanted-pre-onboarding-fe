@@ -7,8 +7,20 @@ import { useNavigate } from "react-router-dom";
 function Login() {
 
     const navigate = useNavigate();
+    
+    const [signUpMessage, setSignUpMessage] = useState('');
+    
+    let [userInfo, setUserInfo] = useState({
+        email:'',
+        password:''
+    })
 
-    const [errorMessage, setErrorMessage] = useState('');
+    const [clickRegister, setClickRegister] = useState(false);
+    function clickToRegister() {
+        setClickRegister(!clickRegister)
+    }
+
+    const [isValidInput, setIsValidInput] = useState(false);
 
     useEffect(() => {
         if(localStorage.getItem('access')) {
@@ -25,27 +37,32 @@ function Login() {
     }})
     .then((response) => {
         localStorage.setItem('access',response.data.access_token)
+        setSignUpMessage("회원가입이 완료되었습니다.");
+        setUserInfo({
+            emil:"",
+            password:""
+        })
     })
     .catch((err) => {
-        setErrorMessage(err.response?.data.message || err);
+        setSignUpMessage(err.response?.data.message || err);
     })
 }
 
-function signIn() {
-    axios.post('https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signin', {
-    email: userInfo.email,
-    password: userInfo.password
-}, {headers: {
-    'Content-Type': 'application/json'
-}})
-.then((response) => {
-    localStorage.setItem('access',response.data.access_token)
-    navigate('/todo')
-})
-.catch((err) => {
-    setErrorMessage(err.response?.data.message || err);
-})
-}
+    function signIn() {
+        axios.post('https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signin', {
+        email: userInfo.email,
+        password: userInfo.password
+    }, {headers: {
+        'Content-Type': 'application/json'
+    }})
+    .then((response) => {
+        localStorage.setItem('access',response.data.access_token)
+        navigate('/todo')
+    })
+    .catch((err) => {
+        setSignUpMessage(err.response?.data.message || err);
+    })
+    }
 
     function onClickButton() {
         if (clickRegister) {
@@ -53,20 +70,8 @@ function signIn() {
         } else {
             signIn()
         }
-        setErrorMessage('')
+        setSignUpMessage('')
     }
-
-    let [userInfo, setUserInfo] = useState({
-        email:'',
-        password:''
-    })
-
-    const [clickRegister, setClickRegister] = useState(false);
-    function clickToRegister() {
-        setClickRegister(!clickRegister)
-    }
-
-    const [isValidInput, setIsValidInput] = useState(false);
 
     function setUserEmail(e) {
         const userEmail = e.target.value;
@@ -102,7 +107,7 @@ function signIn() {
             <div className="login-box">
             <input type="email" placeholder="E-mail을 입력해 주세요" onChange={setUserEmail} value={userInfo.email} />
             <input type="password" placeholder="비밀번호를 입력해 주세요" onChange={setUserPassword} value={userInfo.password} />
-            { errorMessage }
+            { signUpMessage }
             <button onClick={onClickButton} className="login-btn" disabled={!isValidInput}>{!clickRegister ? "로그인" : "회원가입"}</button>
             <span onClick={clickToRegister} className="register-button">{!clickRegister ? " 회원가입" : " 로그인"}</span>
             </div>
