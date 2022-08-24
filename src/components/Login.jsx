@@ -16,8 +16,13 @@ function Login() {
     })
 
     const [clickRegister, setClickRegister] = useState(false);
+
     function clickToRegister() {
         setClickRegister(!clickRegister)
+        setUserInfo({
+            email:"",
+            password:""
+        })
     }
 
     const [isValidInput, setIsValidInput] = useState(false);
@@ -39,9 +44,11 @@ function Login() {
         localStorage.setItem('access',response.data.access_token)
         setSignUpMessage("회원가입이 완료되었습니다.");
         setUserInfo({
-            emil:"",
+            email:"",
             password:""
         })
+        setClickRegister(false);
+        setIsValidInput(false);
     })
     .catch((err) => {
         setSignUpMessage(err.response?.data.message || err);
@@ -105,6 +112,7 @@ function Login() {
     return (
         <>
             <div className="login-box">
+            <h1>{!clickRegister ? "로그인 정보를 입력해주세요." : "회원가입 정보를 입력해주세요."}</h1>
             <input type="email" placeholder="E-mail을 입력해 주세요" onChange={setUserEmail} value={userInfo.email} />
             <input type="password" placeholder="비밀번호를 입력해 주세요" onChange={setUserPassword} value={userInfo.password} />
             { signUpMessage }
