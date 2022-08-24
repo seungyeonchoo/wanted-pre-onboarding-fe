@@ -70,6 +70,11 @@ function List() {
         })
     };
 
+    function handleLogOut() {
+        localStorage.removeItem('access');
+        navigate('/', {replace:false});
+    }
+
     return (
         <div className="todolist">
         <h1 className="todo-title">To Do List!</h1>
@@ -90,6 +95,7 @@ function List() {
         )}
         </ul>
         </div>
+        <div onClick={handleLogOut} className='log-out'>로그아웃</div>
         </div>
     )
 }
