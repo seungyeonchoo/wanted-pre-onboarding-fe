@@ -4,10 +4,10 @@ import { useState } from "react";
 function Item(props) {
     const [editMode, setEditMode] = useState(false);
     const [isCompleted, setIsCompleted] = useState(props.isCompleted);
-    let [itemChange, setItemChange] = useState('');
+    let [itemChange, setItemChange] = useState(props.todo);
 
     function onEdit() {
-        setEditMode(true);
+        setEditMode(true); 
     }
 
     function editedItem(e) {
@@ -16,18 +16,19 @@ function Item(props) {
 
     function editCancle() {
         setEditMode(false);
+        setItemChange(props.todo)
     }
     
     return (
         <li key={props.id} className="todo-item">
         {editMode ? 
         <>
-        <input onChange={editedItem} value={props.todo} className='edit-input' type='text' autoFocus />
+        <input onChange={editedItem} value={itemChange} className='edit-input' type='text' autoFocus />
         <div className="item-btn">
         <button onClick={() => {
             props.editItem(props.id, itemChange, isCompleted);
             setEditMode(false);
-            setItemChange('');
+            setItemChange(itemChange);
             }}>제출</button>
         <button onClick={editCancle} >취소</button>
         </div>
