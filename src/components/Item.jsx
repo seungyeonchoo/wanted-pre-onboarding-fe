@@ -22,13 +22,13 @@ function Item(props) {
         <li key={props.id} className="todo-item">
         {editMode ? 
         <>
-        <input onChange={editedItem} value={itemChange||''} className='edit-input' type='text' autoFocus />
+        <input onChange={editedItem} value={props.todo} className='edit-input' type='text' autoFocus />
         <div className="item-btn">
         <button onClick={() => {
             props.editItem(props.id, itemChange, isCompleted);
             setEditMode(false);
             setItemChange('');
-        }}>제출</button>
+            }}>제출</button>
         <button onClick={editCancle} >취소</button>
         </div>
         </>
@@ -37,7 +37,7 @@ function Item(props) {
         <input onChange={(e) => {
             props.editItem(props.id, props.todo, e.target.checked);
             setIsCompleted(e.target.checked);
-        }} type="checkbox" checked={isCompleted} />
+            }} type="checkbox" checked={isCompleted} />
         <div className="item">{props.todo}</div>
         <div className="item-btn">
             <button onClick={onEdit} 
