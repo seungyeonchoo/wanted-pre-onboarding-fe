@@ -20,7 +20,7 @@ function List() {
     )
 
     function getList(){
-        axios.get('https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos', {headers: {
+        axios.get('https://n38lcff1wk.execute-api.ap-northeast-2.amazonaws.com/todos', {headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('access')
         }})
         .then((response) => {
@@ -29,7 +29,7 @@ function List() {
     }
 
     function delItem(itemId){
-        axios.delete('https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos/' + itemId, {
+        axios.delete('https://n38lcff1wk.execute-api.ap-northeast-2.amazonaws.com/todos/' + itemId, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('access')
         }})
@@ -42,7 +42,7 @@ function List() {
     };
 
     function editItem(targetId, todo, isCompleted){
-        axios.put('https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos/' + targetId, {
+        axios.put('https://n38lcff1wk.execute-api.ap-northeast-2.amazonaws.com/todos/' + targetId, {
             todo,
             isCompleted
     }, {
