@@ -6,7 +6,7 @@ function Input(props) {
     let [inputValue, setInputValue] = useState('');
 
     function createItem(){
-        axios.post('https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos', {
+        axios.post('https://n38lcff1wk.execute-api.ap-northeast-2.amazonaws.com/todos', {
             todo : inputValue  
         }, {headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('access'),
